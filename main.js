@@ -28,5 +28,34 @@ function calculateResults(e) {
         showError('Please check your numbers');
     }
 
+
+    function showError(error){
+        //1. create a div
+        const errorDiv = document.createElement('div');
+
+        //4.get elements for display position
+        const card = document.querySelector('.card');
+        const heading = document.querySelector('.heading');
+
+        //2.Add class to the div
+        errorDiv.className = 'alert alert-danger'
+
+        //3.Add text (create text and append to div)
+        errorDiv.appendChild(document.createTextNode(error));
+
+        //5. Insert error above heading
+        card.insertBefore(errorDiv, heading);
+
+        //6. desaparecer el error 3 seconds
+        setTimeout(clearError, 3000);
+
+
+        //clear error
+        function clearError(){
+            document.querySelector('.alert').remove();
+        }
+
+    }
+
     e.preventDefault();
 }
